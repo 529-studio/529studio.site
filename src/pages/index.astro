@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import TelemetrySection from '../components/TelemetrySection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import TechRadar from '../components/TechRadar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>529 Studio — Autonomous Infrastructure &amp; High-Performance Engineering</title>
+    <meta
+      name="description"
+      content="529 Studio: Hệ sinh thái công nghệ tự chủ, xử lý thị giác máy tính thời gian thực (Computer Vision), mô hình đại lý thông minh (AI Agents) và hạ tầng phân tán Zero-Trust."
+    />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="529 Studio — Autonomous Infrastructure & High-Performance Engineering" />
+    <meta
+      property="og:description"
+      content="Showcase các giải pháp phần mềm phân tán, Computer Vision và AI Agents thực chiến của 529 Studio."
+    />
+    <meta property="og:url" content="https://529studio.site/" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#07090e] text-[#f3f4f6]">
+    <Navbar />
+    <main class="flex-grow">
+      <Hero />
+      <ProjectsSection />
+      <TelemetrySection />
+      <TechRadar />
+    </main>
+    <Footer />
+  </body>
+</html>

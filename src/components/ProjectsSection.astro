@@ -1,0 +1,223 @@
+---
+---
+
+<section id="projects" class="py-16 md:py-24 border-b border-[#1a2233]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="text-xs font-bold uppercase tracking-wider mono text-[#22c55e] mb-2">
+        Sản Phẩm &amp; Năng Lực Cốt Lõi
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Featured Engineering Projects
+      </h2>
+      <p class="text-base text-[#9ca3af] max-w-2xl">
+        Các giải pháp phần mềm phân tán, ứng dụng thị giác máy tính và hệ thống AI mà team 529 Studio trực tiếp thiết kế, triển khai và vận hành thực tế.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="space-y-8">
+      
+      <!-- Project 1: Warded -->
+      <div class="bg-[#0d111a] border border-[#1a2233] hover:border-[#2a354d] transition-all rounded-xl p-6 sm:p-8 relative overflow-hidden group">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6">
+          <div>
+            <div class="flex items-center gap-3 flex-wrap mb-2">
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/30">
+                COMPUTER VISION
+              </span>
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/30">
+                DISTRIBUTED AI
+              </span>
+              <span class="text-xs mono text-[#9ca3af]">
+                Status: <strong class="text-white">[LIVE STAGING]</strong>
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Warded (projectKV) — Hệ Thống Phân Tích Camera Giao Thông Thời Gian Thực
+            </h3>
+          </div>
+          <a
+            href="https://warded-stg.529studio.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold mono bg-[#111622] text-white border border-[#2a354d] hover:border-[#22c55e] hover:bg-[#161c2b] transition-all self-start"
+          >
+            <span>Live Staging UI</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <p class="text-sm sm:text-base text-[#9ca3af] leading-relaxed mb-6">
+          Nền tảng giám sát và trích xuất lưu lượng phương tiện thông minh từ mạng lưới camera giao thông TP.HCM. Hệ thống vận hành theo mô hình phân tán lai giữa Master Ingress và Dedicated AI Compute Worker qua mạng Tailscale WireGuard.
+        </p>
+
+        <!-- Technical Highlights Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#38bdf8] uppercase tracking-wider mb-1">Inference Latency</div>
+            <div class="text-xl font-bold mono text-white">p50: 16.17 ms</div>
+            <div class="text-xs text-[#9ca3af] mt-1">YOLOv8n + OpenVINO tăng tốc AVX2 trên CPU AMD Zen 3+</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#22c55e] uppercase tracking-wider mb-1">Throughput</div>
+            <div class="text-xl font-bold mono text-white">50 Cams / 2.24s</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Xử lý ~22.3 FPS đồng thời, snapshot RAM cache TTL 10s</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-white uppercase tracking-wider mb-1">Spatial Indexing</div>
+            <div class="text-xl font-bold mono text-white">Uber H3 Hexagon</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Golang Gin API định tuyến và vẽ biểu đồ nhiệt không gian</div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex items-center gap-2 flex-wrap text-xs mono text-[#9ca3af] pt-4 border-t border-[#1a2233]">
+          <span class="text-white font-semibold">Stack:</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Golang (Gin)</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">OpenVINO</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">YOLOv8n</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Uber H3</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Tailscale WireGuard</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Cloudflare R2</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Docker Compose</span>
+        </div>
+      </div>
+
+      <!-- Project 2: F1 Virtual Engineer -->
+      <div class="bg-[#0d111a] border border-[#1a2233] hover:border-[#2a354d] transition-all rounded-xl p-6 sm:p-8 relative overflow-hidden group">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6">
+          <div>
+            <div class="flex items-center gap-3 flex-wrap mb-2">
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/30">
+                AGENTIC AI
+              </span>
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/30">
+                TELEMETRY REASONING
+              </span>
+              <span class="text-xs mono text-[#9ca3af]">
+                Status: <strong class="text-white">[PRODUCTION]</strong>
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              F1 Virtual Engineer — Apex Racing Assistant
+            </h3>
+          </div>
+          <a
+            href="https://f1.529studio.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold mono bg-[#111622] text-white border border-[#2a354d] hover:border-[#22c55e] hover:bg-[#161c2b] transition-all self-start"
+          >
+            <span>Live App</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <p class="text-sm sm:text-base text-[#9ca3af] leading-relaxed mb-6">
+          Trợ lý phân tích chiến thuật và dữ liệu telemetry chặng đua Formula 1. Kết hợp thư viện FastF1, hàng đợi bất đồng bộ RabbitMQ Celery và mô hình ngôn ngữ lớn Google Gemini để tự động giải trình nguyên nhân pit-stop, delta thời gian và độ hao mòn lốp xe.
+        </p>
+
+        <!-- Technical Highlights Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#f59e0b] uppercase tracking-wider mb-1">AI Reasoning</div>
+            <div class="text-xl font-bold mono text-white">Google Gemini</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Phân tích chiến lược lốp và diễn biến cuộc đua theo ngữ cảnh</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#38bdf8] uppercase tracking-wider mb-1">Async Pipeline</div>
+            <div class="text-xl font-bold mono text-white">RabbitMQ + Celery</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Hàng đợi apex.tasks &amp; dead-letter queue cô lập lỗi xử lý</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#22c55e] uppercase tracking-wider mb-1">Full-Stack SSR</div>
+            <div class="text-xl font-bold mono text-white">Next.js + FastAPI</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Supabase Auth, FastF1 cache engine và Redis backend</div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex items-center gap-2 flex-wrap text-xs mono text-[#9ca3af] pt-4 border-t border-[#1a2233]">
+          <span class="text-white font-semibold">Stack:</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Next.js SSR</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">FastAPI</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">FastF1</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Celery</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">RabbitMQ</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Google Gemini API</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Supabase</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Redis</span>
+        </div>
+      </div>
+
+      <!-- Project 3: Autonomous SRE & Zero-Trust Ingress -->
+      <div class="bg-[#0d111a] border border-[#1a2233] hover:border-[#2a354d] transition-all rounded-xl p-6 sm:p-8 relative overflow-hidden group">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6 mb-6">
+          <div>
+            <div class="flex items-center gap-3 flex-wrap mb-2">
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#a855f7]/10 text-[#a855f7] border border-[#a855f7]/30">
+                DEVOPS / SRE
+              </span>
+              <span class="px-2.5 py-1 rounded text-[11px] font-bold mono bg-[#22c55e]/10 text-[#22c55e] border border-[#22c55e]/30">
+                ZERO TRUST
+              </span>
+              <span class="text-xs mono text-[#9ca3af]">
+                Status: <strong class="text-white">[SELF-HOSTED 24/7]</strong>
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              529 Studio Autonomous Infrastructure — Homelab Cluster
+            </h3>
+          </div>
+          <a
+            href="https://status.529studio.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold mono bg-[#111622] text-white border border-[#2a354d] hover:border-[#22c55e] hover:bg-[#161c2b] transition-all self-start"
+          >
+            <span>Live Uptime Status</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <p class="text-sm sm:text-base text-[#9ca3af] leading-relaxed mb-6">
+          Cụm máy chủ tự chủ vận hành liên tục 24/7 trên phần cứng tiết kiệm điện năng (Intel Celeron N2930 fanless mini PC). Hoàn toàn vô hình trước các công cụ dò quét cổng mạng Internet nhờ kiến trúc Zero-NAT kết hợp Cloudflare Argo Tunnel và Let's Encrypt Wildcard ACME DNS-01.
+        </p>
+
+        <!-- Technical Highlights Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#a855f7] uppercase tracking-wider mb-1">Zero-NAT Ingress</div>
+            <div class="text-xl font-bold mono text-white">Argo + Traefik v3</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Kết nối outbound mã hóa, tự động cấp phát SSL Wildcard</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#22c55e] uppercase tracking-wider mb-1">Alert Gateway</div>
+            <div class="text-xl font-bold mono text-white">n8n Telegram Router</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Phân luồng cảnh báo tự động theo Topic (Infra, Ops, Error Logs)</div>
+          </div>
+          <div class="bg-[#111622]/60 border border-[#1a2233] rounded-lg p-4">
+            <div class="text-xs mono font-bold text-[#38bdf8] uppercase tracking-wider mb-1">Resource Optimization</div>
+            <div class="text-xl font-bold mono text-white">cgroups + zram</div>
+            <div class="text-xs text-[#9ca3af] mt-1">Kiểm soát RAM/CPU chặt chẽ và bảo vệ ổ đĩa cơ 5400 RPM</div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex items-center gap-2 flex-wrap text-xs mono text-[#9ca3af] pt-4 border-t border-[#1a2233]">
+          <span class="text-white font-semibold">Stack:</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Cloudflare Argo Tunnel</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Traefik v3</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">n8n Automation</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Tailscale Mesh</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Debian GNU/Linux 13</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Docker Compose</span>
+          <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">Uptime Kuma</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
