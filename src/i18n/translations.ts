@@ -198,6 +198,8 @@ export const translations = {
         {
           name: 'Vu Thanh Dat',
           handle: '@thdat-vu',
+          avatar: 'https://github.com/thdat-vu.png',
+          initials: 'TD',
           url: 'https://github.com/thdat-vu',
           roleTags: ['SYSTEM ARCHITECT', 'AI & FULL-STACK'],
           summary: 'Leads software system architecture, high-performance backend pipelines, applied AI integration (Computer Vision & LLMs), and full-stack web platforms.',
@@ -212,6 +214,8 @@ export const translations = {
         {
           name: 'Dam Quang Giang',
           handle: '@giangdq202',
+          avatar: 'https://github.com/giangdq202.png',
+          initials: 'DG',
           url: 'https://github.com/giangdq202',
           roleTags: ['LEAD INFRASTRUCTURE', 'DEVSECOPS & SRE'],
           summary: 'Architects, provisions, and maintains 24/7 self-hosted homelab infrastructure, zero-trust ingress networking, automated alerting pipelines, and low-power hardware tuning.',
@@ -462,6 +466,8 @@ export const translations = {
         {
           name: 'Vu Thanh Dat',
           handle: '@thdat-vu',
+          avatar: 'https://github.com/thdat-vu.png',
+          initials: 'TD',
           url: 'https://github.com/thdat-vu',
           roleTags: ['SYSTEM ARCHITECT', 'AI & FULL-STACK'],
           summary: 'Chịu trách nhiệm thiết kế kiến trúc hệ thống, phát triển backend hiệu năng cao, tích hợp suy luận AI (Computer Vision & LLM), và xây dựng các giao diện web phức tạp.',
@@ -476,6 +482,8 @@ export const translations = {
         {
           name: 'Dam Quang Giang',
           handle: '@giangdq202',
+          avatar: 'https://github.com/giangdq202.png',
+          initials: 'DG',
           url: 'https://github.com/giangdq202',
           roleTags: ['LEAD INFRASTRUCTURE', 'DEVSECOPS & SRE'],
           summary: 'Chịu trách nhiệm thiết kế, triển khai và vận hành toàn bộ hạ tầng máy chủ tự lưu trữ 24/7, mạng lưới Zero-Trust Ingress, tự động hóa cảnh báo và tối ưu hóa tài nguyên phần cứng.',
