@@ -7,38 +7,41 @@ import ProjectsSection from '../components/ProjectsSection.astro';
 import TeamSection from '../components/TeamSection.astro';
 import TechRadar from '../components/TechRadar.astro';
 import Footer from '../components/Footer.astro';
+import { translations } from '../i18n/translations';
+
+const lang = 'en';
+const meta = translations[lang].meta;
 ---
 
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>529 Studio — Autonomous Infrastructure &amp; High-Performance Engineering</title>
-    <meta
-      name="description"
-      content="529 Studio: Hệ sinh thái công nghệ tự chủ, xử lý thị giác máy tính thời gian thực (Computer Vision), mô hình đại lý thông minh (AI Agents) và hạ tầng phân tán Zero-Trust."
-    />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" />
     
+    <!-- i18n Alternate Links -->
+    <link rel="alternate" hreflang="en" href="https://529studio.site/" />
+    <link rel="alternate" hreflang="vi" href="https://529studio.site/vi" />
+    <link rel="alternate" hreflang="x-default" href="https://529studio.site/" />
+
     <!-- Open Graph -->
-    <meta property="og:title" content="529 Studio — Autonomous Infrastructure & High-Performance Engineering" />
-    <meta
-      property="og:description"
-      content="Showcase các giải pháp phần mềm phân tán, Computer Vision và AI Agents thực chiến của 529 Studio."
-    />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
     <meta property="og:url" content="https://529studio.site/" />
     <meta property="og:type" content="website" />
   </head>
   <body class="min-h-screen flex flex-col bg-[#07090e] text-[#f3f4f6]">
-    <Navbar />
+    <Navbar lang={lang} />
     <main class="flex-grow">
-      <Hero />
-      <ProjectsSection />
-      <TeamSection />
-      <TelemetrySection />
-      <TechRadar />
+      <Hero lang={lang} />
+      <ProjectsSection lang={lang} />
+      <TeamSection lang={lang} />
+      <TelemetrySection lang={lang} />
+      <TechRadar lang={lang} />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

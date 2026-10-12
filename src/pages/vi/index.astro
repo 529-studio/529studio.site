@@ -1,0 +1,47 @@
+---
+import '../../styles/global.css';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import TelemetrySection from '../../components/TelemetrySection.astro';
+import ProjectsSection from '../../components/ProjectsSection.astro';
+import TeamSection from '../../components/TeamSection.astro';
+import TechRadar from '../../components/TechRadar.astro';
+import Footer from '../../components/Footer.astro';
+import { translations } from '../../i18n/translations';
+
+const lang = 'vi';
+const meta = translations[lang].meta;
+---
+
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+    
+    <!-- i18n Alternate Links -->
+    <link rel="alternate" hreflang="en" href="https://529studio.site/" />
+    <link rel="alternate" hreflang="vi" href="https://529studio.site/vi" />
+    <link rel="alternate" hreflang="x-default" href="https://529studio.site/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content="https://529studio.site/vi" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#07090e] text-[#f3f4f6]">
+    <Navbar lang={lang} />
+    <main class="flex-grow">
+      <Hero lang={lang} />
+      <ProjectsSection lang={lang} />
+      <TeamSection lang={lang} />
+      <TelemetrySection lang={lang} />
+      <TechRadar lang={lang} />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

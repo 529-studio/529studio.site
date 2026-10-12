@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../i18n/translations';
+import { translations } from '../i18n/translations';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = translations[lang].telemetry;
 ---
 
 <section id="telemetry" class="py-16 md:py-20 border-b border-[#1a2233]">
@@ -6,15 +15,15 @@
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
         <div class="text-xs font-bold uppercase tracking-wider mono text-[#22c55e] mb-2">
-          Hạ Tầng Biên Thời Gian Thực
+          {t.tag}
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-          Network &amp; Edge Telemetry
+          {t.title}
         </h2>
       </div>
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0d111a] border border-[#1a2233] text-xs mono text-[#9ca3af]">
         <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-ping"></span>
-        <span>EDGE STATUS: <strong>HEALTHY</strong></span>
+        <span>{t.status}</span>
       </div>
     </div>
 
@@ -23,46 +32,46 @@
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 pb-6 border-b border-[#1a2233]">
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">35.8K+</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">Total Requests (24h)</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.totalRequests}</div>
         </div>
 
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-[#22c55e] tracking-tight">3.0K+</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">Threats Mitigated</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.threatsMitigated}</div>
         </div>
 
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">160+ MB</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">Edge Bandwidth</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.edgeBandwidth}</div>
         </div>
 
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">5 Repos</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">Public Codebases</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.publicRepos}</div>
         </div>
 
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-[#38bdf8] tracking-tight">HTTP/3</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">QUIC Protocol</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.networkProtocol}</div>
         </div>
 
         <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
           <div class="text-2xl sm:text-3xl font-bold mono text-[#22c55e] tracking-tight">&lt; 15ms</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">Edge Latency</div>
+          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.edgeLatency}</div>
         </div>
       </div>
 
       <!-- Live Metadata Footer -->
       <div class="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs mono text-[#9ca3af]">
         <div class="flex items-center gap-6 flex-wrap">
-          <span>Ingress: <strong class="text-white">Cloudflare Argo Tunnel (Zero NAT)</strong></span>
+          <span><strong class="text-white">{t.ingress}</strong></span>
           <span>•</span>
-          <span>PoP Routing: <strong class="text-white">SIN / HKG Anycast</strong></span>
+          <span><strong class="text-white">{t.popRouting}</strong></span>
           <span>•</span>
-          <span>Encryption: <strong class="text-white">TLS 1.3 / ACME DNS-01</strong></span>
+          <span><strong class="text-white">{t.encryption}</strong></span>
         </div>
         <div class="text-[#22c55e]">
-          ● 100% Edge-Proxied
+          ● {t.edgeProxied}
         </div>
       </div>
     </div>
