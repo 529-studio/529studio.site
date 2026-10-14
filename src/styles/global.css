@@ -35,3 +35,37 @@ body {
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
+
+/* Tactical HUD & Motion Effects */
+@keyframes scanline-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  15% { opacity: 0.6; }
+  85% { opacity: 0.6; }
+  100% { transform: translateY(800%); opacity: 0; }
+}
+
+.scanline-bar {
+  animation: scanline-sweep 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  60% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.radar-ping {
+  animation: radar-pulse 2.2s cubic-bezier(0.1, 0, 0.3, 1) infinite;
+}
+
+.crt-grid {
+  background-size: 6px 6px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline-bar,
+  .radar-ping {
+    animation: none !important;
+  }
+}
