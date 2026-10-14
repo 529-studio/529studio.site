@@ -46,6 +46,14 @@ export const translations = {
       title: 'Featured Engineering Projects',
       subtitle: 'Distributed software solutions, computer vision engines, and agentic AI systems architected, deployed, and maintained in production by 529 Studio.',
       stackLabel: 'Stack:',
+      inspectHighRes: 'Inspect High-Res',
+      zoomHint: 'Click to expand high-resolution feed',
+      liveSignal: 'LIVE SIGNAL',
+      feedActive: 'FEED ACTIVE',
+      architectureSpecs: 'Architecture & Performance Specs',
+      otherSystemsTag: 'DISTRIBUTED SYSTEMS MATRIX // ADDITIONAL WORKLOADS',
+      otherSystemsTitle: 'Enterprise Platforms & Zero-Trust Infrastructure',
+      otherSystemsSubtitle: 'Specialized manufacturing execution systems, local-first developer tooling, and self-hosted 24/7 homelab clusters engineered by 529 Studio.',
       items: [
         {
           id: 'warded',
@@ -54,6 +62,31 @@ export const translations = {
           status: '[LIVE STAGING]',
           title: 'Warded (projectKV) — Real-Time Traffic Computer Vision & Corridor Monitoring',
           description: 'A distributed intelligent traffic surveillance and vehicle density extraction platform monitoring Ho Chi Minh City public cameras in real time. Designed on a hybrid multi-node topology connecting Master Ingress and Dedicated AI Compute Worker via Tailscale WireGuard.',
+          badgeColor: 'emerald',
+          telemetryStatus: 'FEED: CAM_587ed91d • FPS: 22.3 • LATENCY: 16.2ms • RTSP/H3 MESH',
+          gallery: [
+            {
+              id: 'cam-hud',
+              src: '/warded-cam-details.jpg',
+              title: 'Live Camera HUD',
+              badge: 'YOLOv8n + OpenVINO',
+              desc: 'Sub-17ms vehicle inference with live bounding boxes, traffic density extraction, and active coordinate tracking.',
+            },
+            {
+              id: 'geo-mesh',
+              src: '/warded-homepage.jpg',
+              title: 'Geospatial H3 Matrix',
+              badge: 'Uber H3 Resolution 8',
+              desc: 'Spatial indexing across 50+ concurrent HCMC traffic cameras with live rain, flooding risk, and corridor congestion overlays.',
+            },
+            {
+              id: 'mobile-kiosk',
+              src: '/warded-mobileview.jpg',
+              title: 'Mobile Operations PWA',
+              badge: 'Field Ops Mobile',
+              desc: 'Zero-latency mobile viewport tailored for field transit officers with touch-optimized arterial camera filtering.',
+            },
+          ],
           metrics: [
             {
               label: 'INFERENCE LATENCY',
@@ -82,6 +115,31 @@ export const translations = {
           status: '[PRODUCTION]',
           title: 'F1 Virtual Engineer — Apex Racing Strategy Assistant',
           description: 'An end-to-end agentic AI race engineer orchestrating Formula 1 telemetry with large language models. Integrates with FastF1 to ingest real lap sensors and uses LangGraph to evaluate pit-window timing, tire-degradation curves, and undercut/overcut viability.',
+          badgeColor: 'rose',
+          telemetryStatus: 'SESSION: MONZA GP L15 • DRIVER: LEC vs PIA • LANGGRAPH: ONLINE',
+          gallery: [
+            {
+              id: 'telemetry-trace',
+              src: '/f1-telementry2.jpg',
+              title: 'Telemetry HUD Trace',
+              badge: 'FastF1 + Sensor Delta',
+              desc: 'Millisecond telemetry synchronization displaying throttle, brake, RPM, and GPS track-map speed heatmaps.',
+            },
+            {
+              id: 'pit-strategy',
+              src: '/f1-strategy2.jpg',
+              title: 'Pit Strategy & Cliff Prediction',
+              badge: 'Degradation Modeling',
+              desc: 'Compound degradation curves, tire cliff forecasting, pit-exit traffic projection, and undercut window viability.',
+            },
+            {
+              id: 'mission-control',
+              src: '/f1-landingpage.jpg',
+              title: 'Mission Control & RAG',
+              badge: 'LangGraph + Gemini',
+              desc: 'Multi-agent conversational reasoning engine citing FIA sporting regulations and historical telemetry traces.',
+            },
+          ],
           metrics: [
             {
               label: 'AI REASONING',
@@ -201,15 +259,15 @@ export const translations = {
           avatar: 'https://github.com/thdat-vu.png',
           initials: 'TD',
           url: 'https://github.com/thdat-vu',
-          roleTags: ['SYSTEM ARCHITECT', 'AI & FULL-STACK'],
-          summary: 'Leads software system architecture, high-performance backend pipelines, applied AI integration (Computer Vision & LLMs), and full-stack web platforms.',
+          roleTags: ['FOUNDING PRODUCT ENGINEER'],
+          summary: 'Backend engineer who enjoys turning clear logic into dependable products. Builds with care, learns by shipping, and focuses on edge cases and practical developer tooling.',
           points: [
-            'System & Application Architecture: Designed overall architectures for Warded (projectKV), F1 Virtual Engineer, and VWMS.',
-            'AI & Computer Vision: OpenVINO YOLOv8n p50 16ms optimization, LangGraph agent orchestration, and Gemini LLM reasoning.',
-            'Full-Stack & Spatial: Built Golang Gin APIs, Uber H3 spatial clustering, Next.js SSR, and collaborative team labeling toolkits.',
-            'Code Quality & Hardening: 18+ security vulnerabilities patched, PR review gatekeeper, automated linters, and runtime guardrails.',
+            'Core Backend & APIs: Developed Go (Gin) and Python (FastAPI) services, real-time SSE streams, and PostgreSQL data models for Warded and VWMS.',
+            'Applied AI Integration: Implemented OpenVINO YOLOv8n inference pipeline for traffic video feeds and LangGraph workflows with Gemini API for F1 telemetry analysis.',
+            'Product Interfaces & Spatial Tooling: Built responsive Next.js web clients, Uber H3 spatial indexing overlays, and team labeling tools.',
+            'Engineering Craft & Reliability: Emphasizes clean repository structure, practical test coverage, strict error handling, and local-first developer experience.',
           ],
-          badges: ['Golang', 'Python', 'OpenVINO', 'YOLOv8', 'Gemini API', 'Next.js', 'FastAPI', 'PostgreSQL'],
+          badges: ['Go', 'Python', 'TypeScript', 'FastAPI', 'Next.js', 'PostgreSQL', 'YOLOv8n', 'OpenVINO', 'Docker'],
         },
         {
           name: 'Dam Quang Giang',
@@ -314,6 +372,14 @@ export const translations = {
       title: 'Featured Engineering Projects',
       subtitle: 'Các giải pháp phần mềm phân tán, ứng dụng thị giác máy tính và hệ thống AI mà team 529 Studio trực tiếp thiết kế, triển khai và vận hành thực tế.',
       stackLabel: 'Stack:',
+      inspectHighRes: 'Phóng To Chi Tiết',
+      zoomHint: 'Nhấn vào ảnh để xem chi tiết độ phân giải cao',
+      liveSignal: 'TÍN HIỆU LIVE',
+      feedActive: 'FEED HOẠT ĐỘNG',
+      architectureSpecs: 'Thông Số Kỹ Thuật & Hiệu Năng',
+      otherSystemsTag: 'HỆ THỐNG PHÂN TÁN & HẠ TẦNG DOANH NGHIỆP',
+      otherSystemsTitle: 'Nền Tảng Doanh Nghiệp & Cụm Máy Chủ Tự Chủ',
+      otherSystemsSubtitle: 'Hệ thống điều hành sản xuất công nghiệp MES, giải pháp local-first và cụm máy chủ Zero-Trust 24/7 do 529 Studio trực tiếp vận hành.',
       items: [
         {
           id: 'warded',
@@ -322,6 +388,31 @@ export const translations = {
           status: '[LIVE STAGING]',
           title: 'Warded (projectKV) — Hệ Thống Phân Tích Camera Giao Thông Thời Gian Thực',
           description: 'Nền tảng giám sát và trích xuất lưu lượng phương tiện thông minh từ mạng lưới camera giao thông TP.HCM theo thời gian thực. Hệ thống vận hành theo mô hình phân tán lai giữa Master Ingress và Dedicated AI Compute Worker qua mạng Tailscale WireGuard.',
+          badgeColor: 'emerald',
+          telemetryStatus: 'NGUỒN PHÁT: CAM_587ed91d • FPS: 22.3 • ĐỘ TRỄ: 16.2ms • MẠNG H3/RTSP',
+          gallery: [
+            {
+              id: 'cam-hud',
+              src: '/warded-cam-details.jpg',
+              title: 'Giao Diện Giám Sát Camera (HUD)',
+              badge: 'YOLOv8n + OpenVINO',
+              desc: 'Suy luận phương tiện thời gian thực <17ms, hiển thị bounding box, đếm mật độ và bám vết tọa độ trực tiếp.',
+            },
+            {
+              id: 'geo-mesh',
+              src: '/warded-homepage.jpg',
+              title: 'Lưới Không Gian H3 Toàn Thành',
+              badge: 'Uber H3 Resolution 8',
+              desc: 'Lập chỉ mục không gian 50+ camera nội đô TP.HCM đồng thời với lớp dữ liệu mưa ngập và cảnh báo ùn tắc theo trục đường.',
+            },
+            {
+              id: 'mobile-kiosk',
+              src: '/warded-mobileview.jpg',
+              title: 'Giao Diện Hiện Trường (Mobile)',
+              badge: 'Hiện Trường PWA',
+              desc: 'Giao diện di động tối ưu độ trễ và băng thông, hỗ trợ điều phối viên tra cứu nhanh tình trạng các nút giao trọng điểm.',
+            },
+          ],
           metrics: [
             {
               label: 'ĐỘ TRỄ SUY LUẬN',
@@ -350,6 +441,31 @@ export const translations = {
           status: '[PRODUCTION]',
           title: 'F1 Virtual Engineer — Apex Racing Assistant',
           description: 'Trợ lý phân tích chiến thuật và dữ liệu telemetry chặng đua Formula 1. Kết hợp FastF1, hàng đợi bất đồng bộ RabbitMQ Celery và LangGraph với mô hình ngôn ngữ lớn Google Gemini để tự động giải trình nguyên nhân pit-stop, delta thời gian và độ hao mòn lốp xe.',
+          badgeColor: 'rose',
+          telemetryStatus: 'CHẶNG ĐUA: MONZA GP L15 • TAY ĐUA: LEC vs PIA • LANGGRAPH: ONLINE',
+          gallery: [
+            {
+              id: 'telemetry-trace',
+              src: '/f1-telementry2.jpg',
+              title: 'Biểu Đồ Telemetry Ga / Phanh',
+              badge: 'FastF1 + Sensor Delta',
+              desc: 'Đồng bộ từng mili-giây chân ga, lực phanh, dải số và bản đồ nhiệt tốc độ GPS trên toàn bộ đường đua.',
+            },
+            {
+              id: 'pit-strategy',
+              src: '/f1-strategy2.jpg',
+              title: 'Mô Phỏng Chiến Thuật Pit & Lốp',
+              badge: 'Mô Hình Hóa Lốp Xe',
+              desc: 'Dự báo thời điểm suy thoái lốp, cửa sổ undercut, thời gian mất trong pit lane và dự phóng vị trí sau pit.',
+            },
+            {
+              id: 'mission-control',
+              src: '/f1-landingpage.jpg',
+              title: 'Trung Tâm Điều Hành & RAG',
+              badge: 'LangGraph + Gemini',
+              desc: 'Bộ đại lý AI đối soát trực tiếp điều lệ thi đấu thể thao FIA và truy xuất dữ liệu cảm biến vòng đua lịch sử.',
+            },
+          ],
           metrics: [
             {
               label: 'SUY LUẬN AI',
@@ -469,15 +585,15 @@ export const translations = {
           avatar: 'https://github.com/thdat-vu.png',
           initials: 'TD',
           url: 'https://github.com/thdat-vu',
-          roleTags: ['SYSTEM ARCHITECT', 'AI & FULL-STACK'],
-          summary: 'Chịu trách nhiệm thiết kế kiến trúc hệ thống, phát triển backend hiệu năng cao, tích hợp suy luận AI (Computer Vision & LLM), và xây dựng các giao diện web phức tạp.',
+          roleTags: ['FOUNDING PRODUCT ENGINEER'],
+          summary: 'Kỹ sư backend đam mê biến tư duy logic mạch lạc thành sản phẩm tin cậy. Luôn tỉ mỉ khi lập trình, học hỏi nhanh qua việc thực chiến đưa sản phẩm vào vận hành và đặc biệt chú trọng các trường hợp biên (edge cases).',
           points: [
-            'Kiến Trúc Ứng Dụng & Hệ Thống: Thiết kế kiến trúc tổng thể cho Warded (projectKV), F1 Virtual Engineer, và nền tảng VWMS.',
-            'AI & Thị Giác Máy Tính: Tối ưu hóa suy luận OpenVINO YOLOv8n p50 16ms, điều phối agent LangGraph và giải trình Gemini LLM.',
-            'Full-Stack & Bản Đồ Không Gian: Lập trình Golang Gin API, bản đồ Uber H3, Next.js SSR và bộ công cụ dán nhãn dữ liệu nhóm.',
-            'Chất Lượng Mã Nguồn & Bảo Mật: Vá 18+ điểm bảo mật, quản lý quy trình PR review, thiết lập linter và guardrail thời gian chờ.',
+            'Backend & Luồng Dữ Liệu: Xây dựng dịch vụ backend bằng Go (Gin) và Python (FastAPI), truyền dữ liệu thời gian thực qua Server-Sent Events (SSE) và thiết kế cơ sở dữ liệu PostgreSQL.',
+            'Ứng Dụng AI Thực Chiến: Tích hợp pipeline suy luận thị giác máy tính YOLOv8n tối ưu với OpenVINO trên camera giao thông; thiết kế luồng quyết định LangGraph kết hợp Gemini API phân tích telemetry đua xe F1.',
+            'Giao Diện & Xử Lý Không Gian: Lập trình giao diện Next.js, tích hợp phân vùng bản đồ Uber H3 cho Warded và các công cụ dán nhãn dữ liệu nội bộ.',
+            'Kỷ Luật Kỹ Thuật & Độ Bền Vững: Chú trọng cấu trúc mã nguồn gọn gàng, kiểm soát lỗi chặt chẽ, tối ưu trải nghiệm khởi chạy cục bộ (local-first) và tính ổn định dài hạn.',
           ],
-          badges: ['Golang', 'Python', 'OpenVINO', 'YOLOv8', 'Gemini API', 'Next.js', 'FastAPI', 'PostgreSQL'],
+          badges: ['Go', 'Python', 'TypeScript', 'FastAPI', 'Next.js', 'PostgreSQL', 'YOLOv8n', 'OpenVINO', 'Docker'],
         },
         {
           name: 'Dam Quang Giang',
