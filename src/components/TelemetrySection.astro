@@ -7,73 +7,50 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const t = translations[lang].telemetry;
+const t = translations[lang].specs;
 ---
 
-<section id="telemetry" class="py-16 md:py-20 border-b border-[#1a2233]">
+<section id="specs" class="py-20 md:py-28 hairline-b bg-black">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
       <div>
-        <div class="text-xs font-bold uppercase tracking-wider mono text-[#22c55e] mb-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-[#888888] mb-3">
           {t.tag}
         </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-[#ededed] mb-3">
           {t.title}
         </h2>
-      </div>
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0d111a] border border-[#1a2233] text-xs mono text-[#9ca3af]">
-        <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-ping"></span>
-        <span>{t.status}</span>
-      </div>
-    </div>
-
-    <!-- Telemetry Card -->
-    <div class="bg-[#0d111a] border border-[#1a2233] rounded-xl p-6 sm:p-8 shadow-xl">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 pb-6 border-b border-[#1a2233]">
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">35.8K+</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.totalRequests}</div>
-        </div>
-
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-[#22c55e] tracking-tight">3.0K+</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.threatsMitigated}</div>
-        </div>
-
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">160+ MB</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.edgeBandwidth}</div>
-        </div>
-
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-white tracking-tight">5 Repos</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.publicRepos}</div>
-        </div>
-
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-[#38bdf8] tracking-tight">HTTP/3</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.networkProtocol}</div>
-        </div>
-
-        <div class="bg-[#111622]/50 border border-[#1a2233] rounded-lg p-4">
-          <div class="text-2xl sm:text-3xl font-bold mono text-[#22c55e] tracking-tight">&lt; 15ms</div>
-          <div class="text-[11px] font-semibold text-[#9ca3af] uppercase tracking-wider mt-1">{t.edgeLatency}</div>
-        </div>
+        <p class="text-xs sm:text-sm text-[#888888] max-w-xl">
+          {t.subtitle}
+        </p>
       </div>
 
-      <!-- Live Metadata Footer -->
-      <div class="pt-6 flex flex-wrap items-center justify-between gap-4 text-xs mono text-[#9ca3af]">
-        <div class="flex items-center gap-6 flex-wrap">
-          <span><strong class="text-white">{t.ingress}</strong></span>
-          <span>•</span>
-          <span><strong class="text-white">{t.popRouting}</strong></span>
-          <span>•</span>
-          <span><strong class="text-white">{t.encryption}</strong></span>
-        </div>
-        <div class="text-[#22c55e]">
-          ● {t.edgeProxied}
-        </div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded text-xs mono text-[#10b981] bg-[#10b981]/10 border border-[#10b981]/20 self-start sm:self-auto">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+        <span>ALL SYSTEMS NOMINAL</span>
       </div>
     </div>
+
+    <!-- Readout Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e] border border-[#1e1e1e] rounded-xl overflow-hidden">
+      {t.readouts.map((item) => (
+        <div class="bg-[#080808] p-6 hover:bg-[#0c0c0c] smooth-trans flex flex-col justify-between">
+          <div class="text-[10px] mono uppercase tracking-wider text-[#666666] mb-2">
+            {item.label}
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-bold mono text-[#ededed] tracking-tight mb-1">
+              {item.val}
+            </div>
+            <div class="text-xs text-[#777777] mono">
+              {item.note}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
   </div>
 </section>

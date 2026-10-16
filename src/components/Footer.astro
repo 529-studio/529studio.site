@@ -10,44 +10,56 @@ const { lang } = Astro.props;
 const t = translations[lang].footer;
 ---
 
-<footer class="py-12 bg-[#05070a] border-t border-[#1a2233]">
+<footer class="py-16 bg-black text-[#888888]">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#1a2233]">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#111622] border border-[#2a354d] flex items-center justify-center font-bold text-white mono text-sm">
-          529
+    
+    <!-- Top Row -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-[#1a1a1a]">
+      <!-- Brand & Manifesto Quote -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-9 h-9 rounded-lg overflow-hidden border border-[#222222] shrink-0 bg-[#0a0a0a]">
+          <img
+            src="/529studioicon2.png"
+            alt="529 Studio Icon"
+            class="w-full h-full object-cover"
+            width="36"
+            height="36"
+            loading="lazy"
+          />
         </div>
         <div>
-          <div class="font-extrabold text-white text-base tracking-tight">{t.brand}</div>
-          <div class="text-xs text-[#9ca3af]">{t.tagline}</div>
+          <div class="font-bold text-[#ededed] text-sm tracking-tight">{t.brand}</div>
+          <div class="text-xs text-[#666666] max-w-md">{t.manifestoQuote}</div>
         </div>
       </div>
 
-      <div class="flex items-center gap-6 text-xs mono text-[#9ca3af] flex-wrap">
-        <a href="https://github.com/529-studio" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+      <!-- Links -->
+      <div class="flex items-center gap-5 text-xs mono text-[#777777] flex-wrap">
+        <a href="https://github.com/529-studio" target="_blank" rel="noopener noreferrer" class="hover:text-[#ededed] smooth-trans">
           {t.orgLink}
         </a>
-        <a href="mailto:contact@529studio.site" class="hover:text-white transition-colors">
+        <a href="mailto:contact@529studio.site" class="hover:text-[#ededed] smooth-trans">
           contact@529studio.site
         </a>
-        <a href="https://github.com/thdat-vu" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+        <a href="https://github.com/thdat-vu" target="_blank" rel="noopener noreferrer" class="hover:text-[#ededed] smooth-trans">
           @thdat-vu ↗
         </a>
-        <a href="https://github.com/giangdq202" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+        <a href="https://github.com/giangdq202" target="_blank" rel="noopener noreferrer" class="hover:text-[#ededed] smooth-trans">
           @giangdq202 ↗
         </a>
       </div>
     </div>
 
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6b7280] mono">
+    <!-- Bottom Row -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#555555] mono">
       <div>
         {t.copyright}
       </div>
-      <div class="flex items-center gap-2 text-[#9ca3af]">
-        <span>{t.edgeHosted}</span>
-        <span>•</span>
-        <span>{t.zeroNat}</span>
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+        <span class="text-[#777777]">{t.edgeStatus}</span>
       </div>
     </div>
+
   </div>
 </footer>
