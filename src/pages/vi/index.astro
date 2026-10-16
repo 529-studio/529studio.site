@@ -2,9 +2,9 @@
 import '../../styles/global.css';
 import Navbar from '../../components/Navbar.astro';
 import Hero from '../../components/Hero.astro';
-import TelemetrySection from '../../components/TelemetrySection.astro';
 import ProjectsSection from '../../components/ProjectsSection.astro';
 import TeamSection from '../../components/TeamSection.astro';
+import TelemetrySection from '../../components/TelemetrySection.astro';
 import TechRadar from '../../components/TechRadar.astro';
 import Footer from '../../components/Footer.astro';
 import { translations } from '../../i18n/translations';
@@ -20,8 +20,17 @@ const meta = translations[lang].meta;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
-    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+    <link rel="icon" type="image/png" href="/529studioicon2.png" />
+    <link rel="apple-touch-icon" href="/529studioicon2.png" />
     
+    <!-- Google Fonts: Geist & Geist Mono (Supports Latin & Vietnamese) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- i18n Alternate Links -->
     <link rel="alternate" hreflang="en" href="https://529studio.site/" />
     <link rel="alternate" hreflang="vi" href="https://529studio.site/vi" />
@@ -32,8 +41,9 @@ const meta = translations[lang].meta;
     <meta property="og:description" content={meta.description} />
     <meta property="og:url" content="https://529studio.site/vi" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://529studio.site/529studioicon2.png" />
   </head>
-  <body class="min-h-screen flex flex-col bg-[#07090e] text-[#f3f4f6]">
+  <body class="min-h-screen flex flex-col bg-black text-[#ededed]">
     <Navbar lang={lang} />
     <main class="flex-grow">
       <Hero lang={lang} />

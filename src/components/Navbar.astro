@@ -10,54 +10,67 @@ const { lang } = Astro.props;
 const t = translations[lang].nav;
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/80 border-b border-[#1a2233]">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <!-- Brand -->
-    <a href={lang === 'vi' ? '/vi' : '/'} class="flex items-center gap-3 group">
-      <div class="w-8 h-8 rounded-lg bg-[#111622] border border-[#2a354d] flex items-center justify-center font-bold text-white mono text-sm group-hover:border-[#22c55e] transition-colors">
-        529
+<header class="sticky top-0 z-50 backdrop-blur-md bg-black/85 hairline-b">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <!-- Brand Mark with 529studioicon2 -->
+    <a href={lang === 'vi' ? '/vi' : '/'} class="flex items-center gap-2.5 group">
+      <div class="relative w-8 h-8 rounded-lg overflow-hidden border border-[#222222] group-hover:border-[#444444] smooth-trans shrink-0">
+        <img
+          src="/529studioicon2.png"
+          alt="529 Studio Icon"
+          class="w-full h-full object-cover"
+          width="32"
+          height="32"
+          loading="eager"
+        />
       </div>
-      <div class="flex flex-col">
-        <span class="font-extrabold tracking-tight text-white text-base leading-none">529 Studio</span>
-        <span class="text-[10px] text-[#9ca3af] mono uppercase tracking-wider mt-1">Autonomous Systems</span>
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-tight text-[#ededed] text-sm group-hover:text-white smooth-trans">
+          {t.brandTitle}
+        </span>
+        <span class="hidden sm:inline-block text-[#333333]">/</span>
+        <span class="hidden sm:inline-block text-xs text-[#777777] mono">
+          {t.brandSub}
+        </span>
       </div>
     </a>
 
     <!-- Navigation Links -->
-    <nav class="hidden md:flex items-center gap-6 text-sm text-[#9ca3af]">
-      <a href="#projects" class="hover:text-white transition-colors">{t.projects}</a>
-      <a href="#team" class="hover:text-white transition-colors">{t.team}</a>
-      <a href="#telemetry" class="hover:text-white transition-colors">{t.telemetry}</a>
-      <a href="#stack" class="hover:text-white transition-colors">{t.radar}</a>
+    <nav class="hidden md:flex items-center gap-6 text-xs mono text-[#888888]">
+      <a href="#works" class="hover:text-[#ededed] smooth-trans">{t.works}</a>
+      <a href="#systems" class="hover:text-[#ededed] smooth-trans">{t.systems}</a>
+      <a href="#engineers" class="hover:text-[#ededed] smooth-trans">{t.engineers}</a>
+      <a href="#specs" class="hover:text-[#ededed] smooth-trans">{t.specs}</a>
     </nav>
 
-    <!-- Right Actions -->
-    <div class="flex items-center gap-3">
-      <!-- Live Edge Badge -->
-      <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mono bg-[#22c55e]/10 border border-[#22c55e]/30 text-[#22c55e]">
-        <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse"></span>
-        {t.liveEdge}
+    <!-- Right Actions: Cohesive 28px Toolbar -->
+    <div class="flex items-center gap-2.5">
+      <!-- Live Status Pill -->
+      <div class="hidden sm:inline-flex h-7 items-center gap-1.5 px-2.5 rounded-md text-[11px] mono text-[#888888] bg-[#0d0d0d] border border-[#1e1e1e]">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+        <span class="tracking-wider uppercase text-[10px]">{t.liveStatus}</span>
       </div>
 
       <!-- Language Switcher -->
       <a
         href={t.switchUrl}
-        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold mono bg-[#111622] text-[#cbd5e1] border border-[#2a354d] hover:border-[#22c55e] hover:text-white transition-all"
+        class="inline-flex h-7 items-center gap-1.5 px-2.5 rounded-md text-[11px] mono text-[#888888] hover:text-[#ededed] bg-[#0a0a0a] border border-[#1e1e1e] hover:border-[#333333] smooth-trans"
         title={`Switch to ${t.switchLang}`}
       >
-        <span class="text-[10px] text-[#6b7280]">{t.currentLang}</span>
-        <span>→</span>
-        <span class="text-white font-bold">{t.switchLangShort}</span>
+        <span class="text-[#555555]">{t.currentLang}</span>
+        <span class="text-[#444444] text-[10px]">→</span>
+        <span class="text-[#ededed] font-medium">{t.switchLangShort}</span>
       </a>
 
-      <!-- GitHub -->
+      <!-- GitHub Link -->
       <a
         href="https://github.com/529-studio"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-[#e5e7eb] transition-all shadow-sm"
+        class="inline-flex h-7 items-center gap-1.5 px-2.5 rounded-md text-xs font-medium bg-[#ededed] text-black hover:bg-white smooth-trans cursor-pointer"
+        aria-label="529 Studio GitHub Organization"
       >
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         <span>GitHub</span>
       </a>
     </div>

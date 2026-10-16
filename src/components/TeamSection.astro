@@ -10,29 +10,31 @@ const { lang } = Astro.props;
 const t = translations[lang].team;
 ---
 
-<section id="team" class="py-16 md:py-24 border-b border-[#1a2233]">
+<section id="engineers" class="py-20 md:py-28 hairline-b bg-black">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="mb-12">
-      <div class="text-xs font-bold uppercase tracking-wider mono text-[#22c55e] mb-2">
+    
+    <!-- Section Header -->
+    <div class="mb-16 md:mb-20">
+      <div class="text-xs font-mono uppercase tracking-widest text-[#888888] mb-3">
         {t.tag}
       </div>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+      <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-[#ededed] mb-4">
         {t.title}
       </h2>
-      <p class="text-base text-[#9ca3af] max-w-2xl">
+      <p class="text-sm sm:text-base text-[#888888] max-w-2xl leading-relaxed">
         {t.subtitle}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- 2 Engineers Profiles -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
       {t.members.map((member) => (
-        <div class="bg-[#0d111a] border border-[#1a2233] hover:border-[#2a354d] transition-all rounded-xl p-6 sm:p-8 flex flex-col justify-between group">
+        <article class="hairline-border bg-[#080808] rounded-xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#2e2e2e] smooth-trans">
           <div>
-            <!-- Header with Avatar -->
-            <div class="flex items-start justify-between gap-4 mb-4">
-              <div class="flex items-start gap-3.5">
-                <!-- Avatar with Fallback Placeholder -->
-                <div class="relative w-12 h-12 rounded-xl overflow-hidden bg-[#161c2b] border border-[#2a354d] shrink-0 mt-0.5">
+            <!-- Header: Avatar + Meta -->
+            <div class="flex items-start justify-between gap-4 mb-6 pb-6 border-b border-[#1a1a1a]">
+              <div class="flex items-center gap-3.5">
+                <div class="relative w-12 h-12 rounded-xl overflow-hidden bg-[#111111] border border-[#222222] shrink-0">
                   <img
                     src={member.avatar}
                     alt={member.name}
@@ -40,65 +42,59 @@ const t = translations[lang].team;
                     loading="lazy"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                   />
-                  <div class="hidden absolute inset-0 w-full h-full items-center justify-center bg-[#161c2b] text-white font-bold mono text-sm select-none">
+                  <div class="hidden absolute inset-0 w-full h-full items-center justify-center bg-[#111111] text-[#ededed] font-bold mono text-sm select-none">
                     {member.initials}
                   </div>
                 </div>
 
                 <div>
-                  <div class="flex items-center gap-2 mb-1 flex-wrap">
-                    {member.roleTags.map((tag) => (
-                      <span class="px-2 py-0.5 rounded text-[10px] font-bold mono bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/30">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h3 class="text-lg sm:text-xl font-bold text-[#ededed] tracking-tight">
                     {member.name}
                   </h3>
-                  <div class="text-xs mono text-[#9ca3af] mt-0.5">{member.handle}</div>
+                  <div class="text-xs mono text-[#777777] mt-0.5">{member.handle}</div>
+                  <div class="text-[11px] mono text-[#10b981] mt-1">{member.role}</div>
                 </div>
               </div>
 
+              <!-- GitHub Profile Link -->
               <a
                 href={member.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold mono bg-[#111622] text-white border border-[#2a354d] hover:border-[#22c55e] hover:bg-[#161c2b] transition-all"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs mono text-[#888888] hover:text-[#ededed] bg-[#0d0d0d] border border-[#1e1e1e] hover:border-[#333333] smooth-trans"
+                aria-label={`${member.name} on GitHub`}
               >
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 <span>GitHub ↗</span>
               </a>
             </div>
 
-            <p class="text-xs sm:text-sm text-[#9ca3af] leading-relaxed mb-6">
+            <!-- Summary Statement -->
+            <p class="text-xs sm:text-sm text-[#888888] leading-relaxed mb-6 font-normal">
               {member.summary}
             </p>
 
-            <!-- Core Specializations -->
-            <div class="space-y-2 mb-6">
-              <div class="text-xs mono font-bold uppercase text-[#cbd5e1] tracking-wider mb-2">
-                {t.focusLabel}
+            <!-- Key Engineering Contributions -->
+            <div class="space-y-2.5 mb-8">
+              <div class="text-[10px] mono uppercase tracking-wider text-[#555555]">
+                Key Contributions
               </div>
-              {member.points.map((point) => (
-                <div class="text-xs mono text-[#9ca3af] flex items-start gap-2">
-                  <span class="text-[#38bdf8] font-bold">•</span>
-                  <span>{point}</span>
+              {member.points.map((pt) => (
+                <div class="text-xs text-[#777777] leading-relaxed flex items-start gap-2">
+                  <span class="text-[#444444] mt-0.5">•</span>
+                  <span>{pt}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <!-- Tech Badges -->
-          <div class="flex items-center gap-1.5 flex-wrap text-[11px] mono text-[#9ca3af] pt-4 border-t border-[#1a2233]">
-            {member.badges.map((badge) => (
-              <span class="px-2 py-0.5 rounded bg-[#161c2b] text-[#cbd5e1]">
-                {badge}
-              </span>
-            ))}
+          <!-- Tech Stack Line -->
+          <div class="pt-4 border-t border-[#1a1a1a] text-[11px] mono text-[#666666]">
+            {member.stackString}
           </div>
-        </div>
+        </article>
       ))}
     </div>
+
   </div>
 </section>

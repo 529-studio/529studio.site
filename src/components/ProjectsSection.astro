@@ -8,294 +8,147 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = translations[lang].projects;
-
-const flagshipProjects = t.items.filter((item) => item.id === 'warded' || item.id === 'f1');
-const secondaryProjects = t.items.filter((item) => item.id !== 'warded' && item.id !== 'f1');
 ---
 
-<section id="projects" class="py-16 md:py-28 border-b border-[#1a2436] relative overflow-hidden bg-[#06080d]">
-  <!-- Subtle ambient background glow -->
-  <div class="absolute top-1/4 -left-48 w-96 h-96 bg-[#10b981]/5 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute top-2/3 -right-48 w-96 h-96 bg-[#ef4444]/5 rounded-full blur-3xl pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+<section id="works" class="py-20 md:py-28 hairline-b bg-black">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[#1a2436]/80 pb-10">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-[11px] font-bold mono bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 mb-3 tracking-wider">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
-          {t.tag}
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-none mb-4">
-          {t.title}
-        </h2>
-        <p class="text-sm sm:text-base text-[#94a3b8] max-w-2xl leading-relaxed">
-          {t.subtitle}
-        </p>
+    <div class="mb-16 md:mb-20">
+      <div class="text-xs font-mono uppercase tracking-widest text-[#888888] mb-3">
+        {t.tag}
       </div>
-
-      <!-- Quick Telemetry Status Pill -->
-      <div class="hidden lg:flex items-center gap-3 px-4 py-2 rounded-lg bg-[#0c111c] border border-[#1a2436] mono text-xs text-[#94a3b8] self-start md:self-auto">
-        <span class="relative flex h-2 w-2">
-          <span class="radar-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]"></span>
-        </span>
-        <span class="text-white font-semibold">2 FLAGSHIP APPS</span>
-        <span class="text-[#334155]">•</span>
-        <span>MULTI-VIEW INTERACTIVE HUDS</span>
-      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-[#ededed] mb-4">
+        {t.title}
+      </h2>
+      <p class="text-sm sm:text-base text-[#888888] max-w-2xl leading-relaxed">
+        {t.subtitle}
+      </p>
     </div>
 
-    <!-- Flagship Projects Showcase -->
-    <div class="space-y-20 md:space-y-28">
-      {flagshipProjects.map((project, index) => {
-        const isWarded = project.id === 'warded';
+    <!-- Flagship Projects -->
+    <div class="space-y-24 md:space-y-32">
+      {t.items.map((project, index) => {
         const isReversed = index % 2 === 1;
-        const themeColor = isWarded ? 'emerald' : 'rose';
-
+        
         return (
           <article 
-            id={`project-card-${project.id}`}
-            class="project-showcase group relative rounded-2xl bg-gradient-to-b from-[#0c111c] to-[#070a10] border border-[#1a2436] hover:border-[#2d3f5d] transition-colors p-6 sm:p-8 lg:p-10 shadow-2xl shadow-black/80"
+            class="hairline-border bg-[#080808] rounded-xl p-6 sm:p-8 md:p-10 relative"
             data-project-id={project.id}
           >
-            <div class={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}>
+            <!-- Meta Bar -->
+            <div class="flex items-center justify-between gap-4 border-b border-[#1a1a1a] pb-4 mb-8 text-xs mono">
+              <div class="flex items-center gap-2 text-[#777777]">
+                <span class="text-[#ededed] font-medium">{project.category}</span>
+                <span>/</span>
+                <span>{project.subCategory}</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] text-[#10b981] bg-[#10b981]/10 border border-[#10b981]/20">
+                <span class="w-1 h-1 rounded-full bg-[#10b981]"></span>
+                <span>{project.status}</span>
+              </div>
+            </div>
+
+            <!-- Content + Gallery Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
               
-              <!-- Content Column -->
+              <!-- Left: Specs & Details -->
               <div class={`lg:col-span-5 flex flex-col justify-between ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div>
-                  <!-- Tags & Status Bar -->
-                  <div class="flex items-center gap-2.5 flex-wrap mb-4">
-                    <span class={`px-2.5 py-1 rounded text-[11px] font-bold mono uppercase tracking-wider ${
-                      isWarded 
-                        ? 'bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30' 
-                        : 'bg-[#ef4444]/15 text-[#f43f5e] border border-[#ef4444]/30'
-                    }`}>
-                      {project.category}
-                    </span>
-                    <span class="px-2.5 py-1 rounded text-[11px] font-bold mono uppercase tracking-wider bg-[#162032] text-[#cbd5e1] border border-[#223147]">
-                      {project.subCategory}
-                    </span>
-                    <span class={`text-[11px] font-mono px-2 py-0.5 rounded ${
-                      isWarded ? 'text-[#34d399] bg-[#10b981]/10' : 'text-[#fb7185] bg-[#ef4444]/10'
-                    }`}>
-                      {project.status}
-                    </span>
-                  </div>
-
-                  <!-- Project Title -->
-                  <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug mb-4">
+                  <h3 class="text-xl sm:text-2xl font-bold text-[#ededed] tracking-tight leading-snug mb-4">
                     {project.title}
                   </h3>
 
-                  <!-- Project Description -->
-                  <p class="text-sm sm:text-base text-[#94a3b8] leading-relaxed mb-6">
+                  <p class="text-xs sm:text-sm text-[#888888] leading-relaxed mb-8">
                     {project.description}
                   </p>
 
-                  <!-- Performance Metrics Grid -->
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-                    {project.metrics.map((metric) => (
-                      <div class="bg-[#090d16]/80 border border-[#162032] rounded-lg p-3 hover:border-[#23334d] transition-colors">
-                        <div class="text-[10px] mono font-bold text-[#64748b] uppercase tracking-wider mb-1">
-                          {metric.label}
-                        </div>
-                        <div class={`text-base font-extrabold mono ${isWarded ? 'text-[#10b981]' : 'text-[#f43f5e]'}`}>
-                          {metric.val}
-                        </div>
-                        <div class="text-[11px] text-[#94a3b8] mt-1 leading-snug">
-                          {metric.desc}
-                        </div>
+                  <!-- Technical Specifications List -->
+                  <div class="space-y-3 mb-8 border-t border-b border-[#1a1a1a] py-5">
+                    <div class="text-[10px] mono uppercase tracking-wider text-[#555555]">
+                      {t.specsLabel}
+                    </div>
+                    {project.specs.map((spec) => (
+                      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs mono">
+                        <span class="text-[#777777]">{spec.label}</span>
+                        <span class="text-[#ededed] font-medium sm:text-right">{spec.val}</span>
                       </div>
+                    ))}
+                  </div>
+
+                  <!-- Stack Badges -->
+                  <div class="flex flex-wrap gap-1.5 mb-8">
+                    {project.stack.map((tech) => (
+                      <span class="px-2 py-0.5 rounded text-[11px] mono text-[#888888] bg-[#0f0f0f] border border-[#1e1e1e]">
+                        {tech}
+                      </span>
                     ))}
                   </div>
                 </div>
 
+                <!-- CTA -->
                 <div>
-                  <!-- Tech Stack Pills -->
-                  <div class="pt-5 border-t border-[#162032] mb-6">
-                    <div class="text-[11px] mono uppercase tracking-wider text-[#64748b] font-semibold mb-2.5">
-                      {t.stackLabel}
-                    </div>
-                    <div class="flex items-center gap-1.5 flex-wrap">
-                      {project.stack.map((item) => (
-                        <span class="px-2.5 py-1 rounded text-xs mono bg-[#0e1422] text-[#cbd5e1] border border-[#1b263b] hover:border-[#2a3b5a] transition-colors">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <!-- Action Buttons -->
-                  <div class="flex items-center gap-3 flex-wrap">
-                    {project.ctaUrl && (
-                      <a
-                        href={project.ctaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold mono tracking-wider transition-all cursor-pointer shadow-lg active:scale-95 ${
-                          isWarded 
-                            ? 'bg-[#10b981] hover:bg-[#059669] text-black shadow-[#10b981]/20' 
-                            : 'bg-[#ef4444] hover:bg-[#dc2626] text-white shadow-[#ef4444]/20'
-                        }`}
-                      >
-                        <span>{project.ctaText}</span>
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                      </a>
-                    )}
-
-                    <button
-                      type="button"
-                      class="trigger-lightbox-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold mono bg-[#0e1422] text-[#cbd5e1] border border-[#1b263b] hover:text-white hover:border-[#2a3b5a] hover:bg-[#141d30] transition-all cursor-pointer active:scale-95"
-                      data-target-project={project.id}
-                    >
-                      <svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-                      <span>{t.inspectHighRes}</span>
-                    </button>
-                  </div>
+                  <a
+                    href={project.ctaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded text-xs font-semibold mono bg-[#ededed] text-black hover:bg-white smooth-trans cursor-pointer"
+                  >
+                    <span>{project.ctaText}</span>
+                    <span>↗</span>
+                  </a>
                 </div>
               </div>
 
-              <!-- Interactive Cockpit Column -->
+              <!-- Right: Interactive Media Exhibit -->
               <div class={`lg:col-span-7 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
-                <div class="cockpit-console rounded-xl bg-[#090d16] border border-[#1a2436] overflow-hidden shadow-2xl relative">
+                <div class="gallery-container bg-[#050505] rounded-lg border border-[#1c1c1c] overflow-hidden p-3 sm:p-4">
                   
-                  <!-- Hardware Header Bar -->
-                  <div class="flex items-center justify-between px-3.5 sm:px-4 py-2.5 bg-[#0e1422] border-b border-[#1a2436] text-[11px] mono">
-                    <div class="flex items-center gap-2">
-                      <div class="flex items-center gap-1.5">
-                        <span class="w-2.5 h-2.5 rounded-full bg-[#ef4444]/80"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-[#f59e0b]/80"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-[#10b981]/80"></span>
-                      </div>
-                      <span class="text-[#475569] font-mono mx-1">|</span>
-                      <span class="text-[#cbd5e1] font-bold tracking-wider hidden sm:inline">
-                        {isWarded ? 'NODE: WARDED_AI_CLUSTER' : 'NODE: APEX_MISSION_CONTROL'}
-                      </span>
-                    </div>
-
-                    <div class="flex items-center gap-2 text-[#94a3b8] text-[10px] sm:text-[11px]">
-                      <span class="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping"></span>
-                      <span class="text-[#10b981] font-bold">{t.feedActive}</span>
-                    </div>
-                  </div>
-
-                  <!-- Telemetry Status Marquee / Bar -->
-                  <div class="px-4 py-1.5 bg-[#0b101c] border-b border-[#162032] flex items-center justify-between text-[11px] mono text-[#64748b]">
-                    <div class="truncate text-[#94a3b8] font-mono text-[10px] sm:text-[11px]">
-                      {project.telemetryStatus}
-                    </div>
-                    <div class="hidden sm:flex items-center gap-2 text-[10px] text-[#475569]">
-                      <span>60 FPS</span>
-                      <span>•</span>
-                      <span>RETINA HUD</span>
-                    </div>
-                  </div>
-
-                  <!-- View Switcher Tabs -->
-                  <div class="bg-[#0b101c]/90 px-3 py-2 border-b border-[#162032] flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-                    {project.gallery?.map((view, vIdx) => (
+                  <!-- Tab Bar -->
+                  <div class="flex items-center gap-1.5 mb-3 overflow-x-auto pb-1 text-xs mono border-b border-[#1c1c1c]">
+                    {project.gallery.map((view, vIdx) => (
                       <button
                         type="button"
-                        class={`view-tab-btn flex-shrink-0 px-3 py-1.5 rounded-md text-xs mono font-semibold tracking-tight transition-all cursor-pointer flex items-center gap-1.5 ${
-                          vIdx === 0
-                            ? isWarded
-                              ? 'bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/40'
-                              : 'bg-[#ef4444]/20 text-[#fb7185] border border-[#ef4444]/40'
-                            : 'text-[#94a3b8] hover:text-white hover:bg-[#131b2e] border border-transparent'
+                        class={`tab-btn px-2.5 py-1 rounded text-xs transition-colors cursor-pointer ${
+                          vIdx === 0 
+                            ? 'bg-[#181818] text-[#ededed] border border-[#2e2e2e]' 
+                            : 'text-[#666666] hover:text-[#aaaaaa] border border-transparent'
                         }`}
-                        data-project={project.id}
-                        data-view-idx={vIdx}
-                        data-src={view.src}
-                        data-title={view.title}
-                        data-badge={view.badge}
-                        data-desc={view.desc}
-                        data-theme={themeColor}
+                        data-target={`view-${project.id}-${vIdx}`}
                       >
-                        <span class="w-1.5 h-1.5 rounded-full bg-current opacity-80"></span>
-                        <span>{view.title}</span>
+                        {view.title}
                       </button>
                     ))}
                   </div>
 
-                  <!-- Screen Viewport with HUD Overlays -->
-                  <div class="relative group/viewport overflow-hidden bg-black/60 aspect-[16/10] sm:aspect-[16/9] flex items-center justify-center cursor-pointer screen-container"
-                    data-project={project.id}
-                  >
-                    <!-- Main Active Screenshot -->
-                    <img
-                      src={project.gallery?.[0]?.src}
-                      alt={project.gallery?.[0]?.title}
-                      loading="lazy"
-                      class="main-screen-img w-full h-full object-cover sm:object-contain transition-transform duration-500 group-hover/viewport:scale-[1.02]"
-                      data-project={project.id}
-                    />
-
-                    <!-- Scanline Bar Animation -->
-                    <div class="scanline-bar absolute inset-x-0 h-2 bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none"></div>
-
-                    <!-- Tactical HUD Corner Reticles -->
-                    <div class={`absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 pointer-events-none transition-colors opacity-70 group-hover/viewport:opacity-100 ${
-                      isWarded ? 'border-[#10b981]' : 'border-[#ef4444]'
-                    }`}></div>
-                    <div class={`absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 pointer-events-none transition-colors opacity-70 group-hover/viewport:opacity-100 ${
-                      isWarded ? 'border-[#10b981]' : 'border-[#ef4444]'
-                    }`}></div>
-                    <div class={`absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 pointer-events-none transition-colors opacity-70 group-hover/viewport:opacity-100 ${
-                      isWarded ? 'border-[#10b981]' : 'border-[#ef4444]'
-                    }`}></div>
-                    <div class={`absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 pointer-events-none transition-colors opacity-70 group-hover/viewport:opacity-100 ${
-                      isWarded ? 'border-[#10b981]' : 'border-[#ef4444]'
-                    }`}></div>
-
-                    <!-- Watermark Coordinates -->
-                    <div class="absolute bottom-3 left-9 hidden sm:block pointer-events-none text-[9px] mono text-white/50 bg-black/40 px-1.5 py-0.5 rounded backdrop-blur-xs">
-                      {isWarded ? 'GEO: 10.80248° N, 106.69796° E' : 'GPS: MONZA 45.6190° N, 9.2811° E'}
-                    </div>
-
-                    <!-- Expand / Zoom Button Overlay -->
-                    <div class="absolute bottom-3 right-9 sm:right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 hover:bg-black/90 border border-white/20 text-white text-xs mono backdrop-blur-md transition-all shadow-lg hover:border-white/40">
-                      <svg class="w-3.5 h-3.5 text-[#38bdf8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
-                      <span class="hidden sm:inline">{t.inspectHighRes}</span>
-                    </div>
-                  </div>
-
-                  <!-- View Caption & Description Footer -->
-                  <div class="p-3 sm:p-4 bg-[#0c111c] border-t border-[#162032] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div class="flex-grow">
-                      <div class="flex items-center gap-2 mb-1">
-                        <span class={`view-badge px-2 py-0.5 rounded text-[10px] font-bold mono ${
-                          isWarded ? 'bg-[#10b981]/20 text-[#34d399]' : 'bg-[#ef4444]/20 text-[#fb7185]'
-                        }`} data-project={project.id}>
-                          {project.gallery?.[0]?.badge}
-                        </span>
-                        <h4 class="view-title text-xs sm:text-sm font-bold text-white mono" data-project={project.id}>
-                          {project.gallery?.[0]?.title}
-                        </h4>
-                      </div>
-                      <p class="view-desc text-xs text-[#94a3b8] line-clamp-2" data-project={project.id}>
-                        {project.gallery?.[0]?.desc}
-                      </p>
-                    </div>
-
-                    <!-- Quick Thumbnails Switcher -->
-                    <div class="flex items-center gap-1.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#1a2436] flex-shrink-0">
-                      {project.gallery?.map((view, vIdx) => (
-                        <button
-                          type="button"
-                          class={`thumb-btn w-12 h-8 rounded border overflow-hidden cursor-pointer transition-all ${
-                            vIdx === 0
-                              ? isWarded ? 'border-[#10b981] ring-1 ring-[#10b981]' : 'border-[#ef4444] ring-1 ring-[#ef4444]'
-                              : 'border-[#1a2436] opacity-60 hover:opacity-100 hover:border-[#2d3f5d]'
-                          }`}
-                          data-project={project.id}
-                          data-view-idx={vIdx}
-                          title={view.title}
+                  <!-- Image Displays -->
+                  <div class="relative bg-black rounded border border-[#181818] overflow-hidden">
+                    {project.gallery.map((view, vIdx) => {
+                      const isMobile = view.id === 'mobile-kiosk';
+                      return (
+                        <div
+                          id={`view-${project.id}-${vIdx}`}
+                          class={`gallery-panel ${vIdx === 0 ? 'block' : 'hidden'} transition-opacity duration-200`}
                         >
-                          <img src={view.src} alt={view.title} class="w-full h-full object-cover" />
-                        </button>
-                      ))}
-                    </div>
+                          <div class="w-full h-[300px] sm:h-[380px] md:h-[440px] flex items-center justify-center bg-black/80 p-2 sm:p-4">
+                            <img
+                              src={view.src}
+                              alt={`${project.title} - ${view.title}`}
+                              class={`max-h-full max-w-full object-contain ${
+                                isMobile 
+                                  ? 'h-full w-auto rounded-xl border border-[#262626] shadow-2xl shadow-black/80' 
+                                  : 'w-full h-full object-contain rounded'
+                              }`}
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="p-3 bg-[#0a0a0a] border-t border-[#181818] flex items-center justify-between text-xs mono text-[#888888]">
+                            <span>{view.desc}</span>
+                            <span class="text-[10px] text-[#555555] shrink-0 ml-2">[{view.badge}]</span>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
 
                 </div>
@@ -307,397 +160,108 @@ const secondaryProjects = t.items.filter((item) => item.id !== 'warded' && item.
       })}
     </div>
 
-    <!-- Subsystems & Secondary Infrastructure Matrix -->
-    <div class="mt-28 pt-16 border-t border-[#1a2436]/80">
+    <!-- Distributed Systems Matrix -->
+    <div id="systems" class="mt-28 md:mt-36 pt-16 border-t border-[#1a1a1a]">
       <div class="mb-12">
-        <div class="text-xs font-bold uppercase tracking-wider mono text-[#38bdf8] mb-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-[#888888] mb-3">
           {t.otherSystemsTag}
         </div>
-        <h3 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+        <h3 class="text-xl sm:text-3xl font-bold tracking-tight text-[#ededed] mb-3">
           {t.otherSystemsTitle}
         </h3>
-        <p class="text-sm sm:text-base text-[#94a3b8] max-w-2xl">
+        <p class="text-xs sm:text-sm text-[#888888] max-w-2xl leading-relaxed">
           {t.otherSystemsSubtitle}
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {secondaryProjects.map((project) => {
-          const isMES = project.id === 'vwms';
-          const isGlobal = project.id === 'global-ready';
-          const isHomelab = project.id === 'homelab';
-
-          const accentColor = isMES ? 'text-[#f59e0b]' : isGlobal ? 'text-[#a78bfa]' : 'text-[#38bdf8]';
-          const badgeBg = isMES ? 'bg-[#f59e0b]/10 text-[#f59e0b] border-[#f59e0b]/30' : isGlobal ? 'bg-[#a78bfa]/10 text-[#a78bfa] border-[#a78bfa]/30' : 'bg-[#38bdf8]/10 text-[#38bdf8] border-[#38bdf8]/30';
-
-          return (
-            <div class="bg-[#0c111c] border border-[#1a2436] hover:border-[#2d3f5d] transition-all rounded-xl p-6 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class={`px-2.5 py-0.5 rounded text-[10px] font-bold mono border ${badgeBg}`}>
-                    {project.category}
-                  </span>
-                  <span class="text-[11px] mono text-[#94a3b8]">
-                    {project.status}
-                  </span>
-                </div>
-
-                <h4 class="text-lg font-bold text-white tracking-tight mb-3 group-hover:text-white transition-colors">
-                  {project.title}
-                </h4>
-
-                <p class="text-xs sm:text-sm text-[#94a3b8] leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                <!-- Mini Metrics -->
-                <div class="space-y-2 mb-6">
-                  {project.metrics.map((metric) => (
-                    <div class="bg-[#080c14] border border-[#162032] rounded p-2.5">
-                      <div class="flex items-baseline justify-between gap-2 mb-0.5">
-                        <span class="text-[10px] mono uppercase text-[#64748b] font-bold">{metric.label}</span>
-                        <span class={`text-xs mono font-bold ${accentColor}`}>{metric.val}</span>
-                      </div>
-                      <div class="text-[10px] text-[#94a3b8] leading-tight">
-                        {metric.desc}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+        {t.systems.map((sys) => (
+          <div class="hairline-border bg-[#080808] hover:bg-[#0c0c0c] hover:border-[#333333] smooth-trans rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-[10px] mono uppercase tracking-wider text-[#666666] mb-2">
+                {sys.tag}
               </div>
+              <h4 class="text-base font-bold text-[#ededed] tracking-tight mb-3">
+                {sys.title}
+              </h4>
+              <p class="text-xs text-[#888888] leading-relaxed mb-6">
+                {sys.description}
+              </p>
 
-              <div>
-                <!-- Tech Stack -->
-                <div class="flex items-center gap-1.5 flex-wrap text-[11px] mono text-[#94a3b8] mb-5 pt-3 border-t border-[#162032]">
-                  {project.stack.slice(0, 5).map((item) => (
-                    <span class="px-2 py-0.5 rounded bg-[#111726] text-[#cbd5e1]">
-                      {item}
-                    </span>
-                  ))}
-                  {project.stack.length > 5 && (
-                    <span class="px-1.5 py-0.5 text-[10px] text-[#64748b]">
-                      +{project.stack.length - 5}
-                    </span>
-                  )}
-                </div>
-
-                <!-- CTA -->
-                {project.isProtected ? (
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold mono bg-[#090d16] text-[#94a3b8] border border-[#162032] w-full justify-center">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
-                    <span>{project.protectedLabel}</span>
-                  </div>
-                ) : project.ctaUrl ? (
-                  <a
-                    href={project.ctaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold mono bg-[#0e1422] text-[#cbd5e1] border border-[#1b263b] hover:text-white hover:border-[#2d3f5d] hover:bg-[#141d30] transition-all w-full justify-center cursor-pointer active:scale-95"
-                  >
-                    <span>{project.ctaText}</span>
-                    <span>↗</span>
-                  </a>
-                ) : null}
-              </div>
+              <!-- Highlights -->
+              <ul class="space-y-1.5 mb-6 text-xs mono text-[#777777]">
+                {sys.highlights.map((h) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-[#444444]">•</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          );
-        })}
+
+            <div class="pt-4 border-t border-[#1a1a1a] flex items-center justify-between">
+              <div class="flex flex-wrap gap-1">
+                {sys.stack.slice(0, 3).map((st) => (
+                  <span class="text-[10px] mono text-[#555555]">
+                    {st}
+                  </span>
+                ))}
+              </div>
+              {sys.isProtected ? (
+                <span class="text-[11px] mono text-[#666666]">
+                  {sys.linkText}
+                </span>
+              ) : (
+                <a
+                  href={sys.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[11px] mono text-[#ededed] hover:underline"
+                >
+                  {sys.linkText}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
 
-  </div>
-
-  <!-- Interactive Lightbox Modal -->
-  <div 
-    id="project-lightbox" 
-    class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 transition-all opacity-0"
-    role="dialog" 
-    aria-modal="true" 
-    aria-label="Image Inspection Lightbox"
-  >
-    <div class="relative max-w-6xl w-full max-h-[92vh] flex flex-col bg-[#090d16] border border-[#1a2436] rounded-2xl overflow-hidden shadow-2xl">
-      
-      <!-- Modal Top Bar -->
-      <div class="flex items-center justify-between px-4 py-3 bg-[#0e1422] border-b border-[#1a2436] text-xs mono">
-        <div class="flex items-center gap-3">
-          <span id="modal-badge" class="px-2 py-0.5 rounded text-[10px] font-bold mono bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/40">
-            INSPECT MODE
-          </span>
-          <span id="modal-title" class="text-white font-bold text-sm tracking-tight truncate max-w-xs sm:max-w-md">
-            Preview
-          </span>
-        </div>
-
-        <button 
-          id="modal-close-btn"
-          type="button" 
-          class="p-1.5 rounded-lg text-[#94a3b8] hover:text-white hover:bg-[#1a2436] transition-colors cursor-pointer"
-          title="Close (Esc)"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Modal Image Container -->
-      <div class="relative flex-grow flex items-center justify-center overflow-auto p-2 sm:p-4 bg-black/70">
-        <img 
-          id="modal-image" 
-          src="" 
-          alt="Full Preview" 
-          class="max-w-full max-h-[72vh] object-contain rounded-lg shadow-xl"
-        />
-
-        <!-- Prev / Next Navigation Arrows -->
-        <button 
-          id="modal-prev-btn"
-          type="button"
-          class="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/70 hover:bg-black text-white border border-white/20 transition-all cursor-pointer backdrop-blur-sm"
-          title="Previous view"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <button 
-          id="modal-next-btn"
-          type="button"
-          class="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/70 hover:bg-black text-white border border-white/20 transition-all cursor-pointer backdrop-blur-sm"
-          title="Next view"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="px-4 py-3 bg-[#0c111c] border-t border-[#1a2436] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-        <p id="modal-desc" class="text-[#94a3b8] max-w-3xl leading-relaxed">
-          Description
-        </p>
-        <div class="flex items-center gap-2 text-[11px] mono text-[#64748b] flex-shrink-0">
-          <span>ESC to close</span>
-          <span>•</span>
-          <span>← / → to navigate</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
-<!-- Client Script for Interactive View Switching & Lightbox -->
 <script>
-  interface GalleryItem {
-    src: string;
-    title: string;
-    badge: string;
-    desc: string;
-  }
+  // Pure lightweight vanilla JS tab switching (Zero bloat)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-container').forEach((container) => {
+      const buttons = container.querySelectorAll('.tab-btn');
+      const panels = container.querySelectorAll('.gallery-panel');
 
-  // Active state map per project
-  const projectStates: Record<string, { currentIdx: number; items: GalleryItem[]; theme: string }> = {};
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          if (!targetId) return;
 
-  // Initialize tabs and handlers
-  function initProjectInteractiveShowcases() {
-    const projectCards = document.querySelectorAll<HTMLElement>('.project-showcase');
+          // Update buttons state
+          buttons.forEach((b) => {
+            b.classList.remove('bg-[#181818]', 'text-[#ededed]', 'border-[#2e2e2e]');
+            b.classList.add('text-[#666666]', 'border-transparent');
+          });
+          btn.classList.add('bg-[#181818]', 'text-[#ededed]', 'border-[#2e2e2e]');
+          btn.classList.remove('text-[#666666]', 'border-transparent');
 
-    projectCards.forEach((card) => {
-      const projectId = card.dataset.projectId;
-      if (!projectId) return;
-
-      const tabButtons = card.querySelectorAll<HTMLButtonElement>('.view-tab-btn');
-      const thumbButtons = card.querySelectorAll<HTMLButtonElement>('.thumb-btn');
-      const mainImg = card.querySelector<HTMLImageElement>(`.main-screen-img[data-project="${projectId}"]`);
-      const screenContainer = card.querySelector<HTMLElement>(`.screen-container[data-project="${projectId}"]`);
-      const viewBadge = card.querySelector<HTMLElement>(`.view-badge[data-project="${projectId}"]`);
-      const viewTitle = card.querySelector<HTMLElement>(`.view-title[data-project="${projectId}"]`);
-      const viewDesc = card.querySelector<HTMLElement>(`.view-desc[data-project="${projectId}"]`);
-      const inspectBtn = card.querySelector<HTMLButtonElement>(`.trigger-lightbox-btn[data-target-project="${projectId}"]`);
-
-      // Harvest gallery items
-      const items: GalleryItem[] = [];
-      tabButtons.forEach((btn) => {
-        items.push({
-          src: btn.dataset.src || '',
-          title: btn.dataset.title || '',
-          badge: btn.dataset.badge || '',
-          desc: btn.dataset.desc || '',
+          // Switch panels
+          panels.forEach((panel) => {
+            if (panel.id === targetId) {
+              panel.classList.remove('hidden');
+              panel.classList.add('block');
+            } else {
+              panel.classList.add('hidden');
+              panel.classList.remove('block');
+            }
+          });
         });
       });
-
-      const theme = tabButtons[0]?.dataset.theme || 'emerald';
-      projectStates[projectId] = { currentIdx: 0, items, theme };
-
-      function switchView(index: number) {
-        if (!items[index]) return;
-        projectStates[projectId].currentIdx = index;
-        const activeItem = items[index];
-
-        // Update main image with subtle fade
-        if (mainImg) {
-          mainImg.style.opacity = '0.3';
-          mainImg.style.transform = 'scale(0.98)';
-          setTimeout(() => {
-            mainImg.src = activeItem.src;
-            mainImg.alt = activeItem.title;
-            mainImg.style.opacity = '1';
-            mainImg.style.transform = 'scale(1)';
-          }, 150);
-        }
-
-        // Update badge, title, desc
-        if (viewBadge) viewBadge.textContent = activeItem.badge;
-        if (viewTitle) viewTitle.textContent = activeItem.title;
-        if (viewDesc) viewDesc.textContent = activeItem.desc;
-
-        // Update tab styles
-        tabButtons.forEach((btn, idx) => {
-          const isCurrent = idx === index;
-          if (isCurrent) {
-            btn.className = `view-tab-btn flex-shrink-0 px-3 py-1.5 rounded-md text-xs mono font-semibold tracking-tight transition-all cursor-pointer flex items-center gap-1.5 ${
-              theme === 'emerald'
-                ? 'bg-[#10b981]/20 text-[#34d399] border border-[#10b981]/40'
-                : 'bg-[#ef4444]/20 text-[#fb7185] border border-[#ef4444]/40'
-            }`;
-          } else {
-            btn.className = 'view-tab-btn flex-shrink-0 px-3 py-1.5 rounded-md text-xs mono font-semibold tracking-tight transition-all cursor-pointer flex items-center gap-1.5 text-[#94a3b8] hover:text-white hover:bg-[#131b2e] border border-transparent';
-          }
-        });
-
-        // Update thumbnail borders
-        thumbButtons.forEach((btn, idx) => {
-          const isCurrent = idx === index;
-          if (isCurrent) {
-            btn.className = `thumb-btn w-12 h-8 rounded border overflow-hidden cursor-pointer transition-all ${
-              theme === 'emerald' ? 'border-[#10b981] ring-1 ring-[#10b981]' : 'border-[#ef4444] ring-1 ring-[#ef4444]'
-            }`;
-          } else {
-            btn.className = 'thumb-btn w-12 h-8 rounded border overflow-hidden cursor-pointer transition-all border-[#1a2436] opacity-60 hover:opacity-100 hover:border-[#2d3f5d]';
-          }
-        });
-      }
-
-      // Add click listeners to tabs
-      tabButtons.forEach((btn, idx) => {
-        btn.addEventListener('click', () => switchView(idx));
-      });
-
-      // Add click listeners to thumbs
-      thumbButtons.forEach((btn, idx) => {
-        btn.addEventListener('click', () => switchView(idx));
-      });
-
-      // Add click listener to screen container or inspect button to open modal
-      screenContainer?.addEventListener('click', () => openLightbox(projectId, projectStates[projectId].currentIdx));
-      inspectBtn?.addEventListener('click', () => openLightbox(projectId, projectStates[projectId].currentIdx));
     });
-  }
-
-  // Lightbox Modal state
-  const modal = document.getElementById('project-lightbox');
-  const modalImg = document.getElementById('modal-image') as HTMLImageElement;
-  const modalTitle = document.getElementById('modal-title');
-  const modalBadge = document.getElementById('modal-badge');
-  const modalDesc = document.getElementById('modal-desc');
-  const closeBtn = document.getElementById('modal-close-btn');
-  const prevBtn = document.getElementById('modal-prev-btn');
-  const nextBtn = document.getElementById('modal-next-btn');
-
-  let activeModalProject = '';
-  let activeModalIndex = 0;
-
-  function openLightbox(projectId: string, index: number) {
-    if (!modal || !projectStates[projectId]) return;
-    activeModalProject = projectId;
-    activeModalIndex = index;
-    updateModalContent();
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    requestAnimationFrame(() => {
-      modal.classList.remove('opacity-0');
-      modal.classList.add('opacity-100');
-    });
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    if (!modal) return;
-    modal.classList.remove('opacity-100');
-    modal.classList.add('opacity-0');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }, 200);
-  }
-
-  function updateModalContent() {
-    const project = projectStates[activeModalProject];
-    if (!project || !project.items[activeModalIndex]) return;
-
-    const currentItem = project.items[activeModalIndex];
-    if (modalImg) modalImg.src = currentItem.src;
-    if (modalTitle) modalTitle.textContent = currentItem.title;
-    if (modalBadge) modalBadge.textContent = currentItem.badge;
-    if (modalDesc) modalDesc.textContent = currentItem.desc;
-
-    // Apply theme styling to modal badge
-    if (modalBadge) {
-      modalBadge.className = `px-2 py-0.5 rounded text-[10px] font-bold mono border ${
-        project.theme === 'emerald'
-          ? 'bg-[#10b981]/20 text-[#34d399] border-[#10b981]/40'
-          : 'bg-[#ef4444]/20 text-[#fb7185] border-[#ef4444]/40'
-      }`;
-    }
-  }
-
-  function nextModalView() {
-    const project = projectStates[activeModalProject];
-    if (!project) return;
-    activeModalIndex = (activeModalIndex + 1) % project.items.length;
-    updateModalContent();
-  }
-
-  function prevModalView() {
-    const project = projectStates[activeModalProject];
-    if (!project) return;
-    activeModalIndex = (activeModalIndex - 1 + project.items.length) % project.items.length;
-    updateModalContent();
-  }
-
-  // Event Listeners for Lightbox
-  closeBtn?.addEventListener('click', closeLightbox);
-  prevBtn?.addEventListener('click', prevModalView);
-  nextBtn?.addEventListener('click', nextModalView);
-
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeLightbox();
-    }
   });
-
-  window.addEventListener('keydown', (e) => {
-    if (!modal || modal.classList.contains('hidden')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextModalView();
-    if (e.key === 'ArrowLeft') prevModalView();
-  });
-
-  // Initialize on DOMContentLoaded and on page swap (for Astro view transitions)
-  document.addEventListener('DOMContentLoaded', initProjectInteractiveShowcases);
-  document.addEventListener('astro:page-load', initProjectInteractiveShowcases);
 </script>
-
-<style>
-  /* Screen transition smoothness */
-  .main-screen-img {
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Hide scrollbar for tab list */
-  .scrollbar-none::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-none {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>
