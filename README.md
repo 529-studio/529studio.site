@@ -76,6 +76,7 @@ npm run preview
    * **Build Command:** `npm run build`
    * **Build Output Directory:** `dist`
 3. Gán Custom Domains: `529studio.site` và `www.529studio.site`.
+4. Workflow `Deploy to Cloudflare Pages` chỉ chạy khi push lên `main` (hoặc chạy tay qua `workflow_dispatch`); pull request không deploy, để bản xem trước không bao giờ ghi đè production.
 
 ---
 
